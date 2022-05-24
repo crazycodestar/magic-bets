@@ -1,0 +1,9 @@
+.tag {
+  padding: 5px;
+  border-radius: var(--border-radius);
+  background-color: gold;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+/*# sourceMappingURL=style.css.map */

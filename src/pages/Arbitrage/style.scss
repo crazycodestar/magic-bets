@@ -1,0 +1,60 @@
+.arbitrage {
+	flex-direction: row;
+	margin: 50px 0;
+}
+
+.bet-table {
+	td,
+	th {
+		padding: 5px 15px;
+	}
+	tr {
+		border-bottom: 1px solid var(--lesser-detail);
+	}
+
+	.table__heading:hover {
+		background-color: transparent;
+	}
+	tr:hover {
+		background-color: var(--lesser-detail);
+	}
+}
+
+.bet-view__details {
+	.layer--1,
+	.layer--2 {
+		span {
+			border-radius: var(--border-radius);
+			padding: 10px;
+			border: 1px solid var(--secondary-colour);
+		}
+	}
+
+	.layer--1 {
+		.odd {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		.odd__evaluation {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		.odd__value {
+			flex: 2;
+			border-radius: 0;
+		}
+	}
+
+	.layer--2 {
+		span:first-of-type {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		span:last-of-type {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			width: 100%;
+		}
+	}
+}

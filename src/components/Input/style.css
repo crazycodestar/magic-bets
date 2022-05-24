@@ -1,0 +1,24 @@
+.input-container {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid var(--primary-colour);
+}
+
+.input-container::-webkit-input-placeholder {
+  text-transform: capitalize;
+}
+
+.input-container:-ms-input-placeholder {
+  text-transform: capitalize;
+}
+
+.input-container::-ms-input-placeholder {
+  text-transform: capitalize;
+}
+
+.input-container::placeholder {
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=style.css.map */

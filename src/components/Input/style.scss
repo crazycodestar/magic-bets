@@ -1,0 +1,11 @@
+.input-container {
+	padding: 10px;
+	width: 100%;
+	margin-bottom: 10px;
+	// border-radius: var(--border-radius);
+	border: none;
+	border-bottom: 1px solid var(--primary-colour);
+	&::placeholder {
+		text-transform: capitalize;
+	}
+}
