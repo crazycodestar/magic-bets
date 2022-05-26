@@ -19,21 +19,25 @@ const Home: FC = () => {
 		<div className="text-white bg-slate-700">
 			<NavigationBar />
 			<div
-				className="px-3 mt-8 mb-20 text-center space-y-5
-			md:px-16"
+				className="px-3 h-[calc(100vh-80px)] flex flex-col justify-center items-center pb-[200px] mt-8 text-center
+			md:px-16 lg:px-60 space-y-8"
 			>
-				<div className="flex flex-col">
-					<h1 className="capitalize">we find and calculate</h1>
-					<h1 className="">Surebets</h1>
+				<div className="space-y-8">
+					<h1 className="text-7xl">We find and calculate</h1>
+					<h1 className="text-7xl">Surebets</h1>
 				</div>
 				<p className="text-lg">
 					All you have to do is go to the bookmakers, place your stake and make
 					a profit.
 				</p>
-				<Button onClick={() => navigate("/sure-bets")}>Sure odds</Button>
+				<div className="w-[420px] mx-auto">
+					<Button modified onClick={() => navigate("/pricing")}>
+						Pricing
+					</Button>
+				</div>
 			</div>
-			<div className="px-3 mb-20 md:px-16">
-				<h2 className="mb-5">Earn $$$ every week with arbitrage betting</h2>
+			<div className="px-3 mb-20 md:px-16 lg:px-60 lg:space-y-8 pb-32">
+				<h1 className="mb-5">Earn $$$ every week with arbitrage betting</h1>
 				<div className="grid grid-cols-1 w-full gap-5 md:grid-cols-2">
 					<IconPoints color="text-yellow-400" Icon={MdLightbulb}>
 						Profitable <Mark color="text-yellow-400">Sure Bets</Mark> daily
@@ -51,7 +55,7 @@ const Home: FC = () => {
 					</IconPoints>
 				</div>
 			</div>
-			<div className="px-3 mb-20 md:px-16">
+			<div className="px-3 mb-20 md:px-16 lg:px-60 py-32">
 				<h2 className="mb-5">How Betslayer-clone works</h2>
 				<div>
 					<div className="flex justify-between">
@@ -67,14 +71,15 @@ const Home: FC = () => {
 						2. Click throught the bookmark link and place your bet
 					</p>
 					<div className="mt-8">
-						<Button>start your free 7 day trial</Button>
-						<p className="text-center text-slate-400 mt-2">
-							no credit card required
-						</p>
+						<div className="w-[420px] mx-auto">
+							<Button modified onClick={() => navigate("/pricing")}>
+								Get full access for only ₦10k
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div className="space-y-5 px-5 md:px-16">
+			<div className="space-y-5 px-5 md:px-16 lg:px-60 pb-32">
 				<h2>
 					Arbitrage Betting is
 					<br /> not Gambling
@@ -89,8 +94,10 @@ const Home: FC = () => {
 					bookmakers and matches where a sure bet exists. All you have to do is
 					place the bet on both sides.
 				</p>
-				<div className="container--left">
-					<Button secondary>Get sure bets now</Button>
+				<div className="mr-auto w-fit">
+					<Button secondary onClick={() => navigate("./sure-bets")}>
+						Get sure bets now
+					</Button>
 				</div>
 			</div>
 			<Footer />
