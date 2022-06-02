@@ -11,12 +11,12 @@ const NavigationBar: FC = () => {
 	const [showDropdown, setShowDropdown] = useState<boolean>(false);
 	const navigate = useNavigate();
 	return (
-		<div className="lg:justify-between lg:items-center lg:space-y-0 lg:flex lg:h-20 px-3 py-4 w-full space-y-5 justify-between bg-slate-700 ">
+		<div className="lg:justify-between lg:items-center lg:space-y-0 lg:flex lg:h-20 lg:px-40 px-3 py-4 w-full space-y-5 justify-between bg-primary ">
 			<div
 				onClick={() => setShowDropdown((state) => !state)}
 				className="rounded-lg bg-slate-500 p-3 absolute right-0 top-0 cursor-pointer active:opacity-70 lg:hidden"
 			>
-				<MdMenu />
+				<MdMenu className="text-white" />
 			</div>
 			<h3
 				className="text-white text-left cursor-pointer"
@@ -45,7 +45,7 @@ const NavigationBar: FC = () => {
 					className="hover:underline cursor-pointer w-full lg:w-fit py-2"
 					onClick={() => navigate("/sure-bets")}
 				>
-					surebets
+					sure bets
 				</p>
 			</div>
 			<div className={`lg:flex gap-3 ${showDropdown ? "flex" : "hidden"}`}>

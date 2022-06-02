@@ -1,14 +1,44 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import NavigationBar from "../components/NavigationBar";
 import Button from "../components/Button";
 
 import { MdOutlineDone } from "react-icons/md";
+import useScript from "../hooks/useScript";
+
+declare global {
+	interface Window {
+		PaystackPop: any;
+	}
+}
 
 const Pricing: FC = () => {
+	useScript("https://js.paystack.co/v1/inline.js");
+
+	const handleSuccess = (arg: any) => {
+		alert(arg);
+	};
+
+	const handlePay = (e: ChangeEvent<HTMLInputElement>) => {
+		e.preventDefault();
+		const handler = window.PaystackPop.setup({
+			key: "pk_live_1a82592beb69c8d6dfc20d6f91ff3ad59962d841",
+			email: "testing@email.com",
+			amount: 10000 * 100,
+			metadata: {
+				subscription: "subscription plan",
+			},
+			ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+			callback: function (response: any) {
+				handleSuccess(response);
+			},
+		});
+		handler.openIframe();
+	};
+
 	return (
 		<div className="h-screen flex flex-col text-white">
 			<NavigationBar />
-			<div className="w-full h-full flex flex-col justify-center items-center bg-slate-700">
+			<div className="w-full h-full flex flex-col justify-center items-center bg-primary">
 				<div className="mx-5 my-auto w-[400px] rounded-lg p-8 bg-slate-600">
 					<div className="pb-3 border-b">
 						<div className="flex items-baseline">
@@ -44,7 +74,7 @@ const Pricing: FC = () => {
 						</ul>
 					</div>
 					<div>
-						<Button>Buy Now</Button>
+						<Button onClick={handlePay}>Buy Now</Button>
 						<p className="text-center mt-2 text-slate-300">arbs premarch 30</p>
 					</div>
 				</div>

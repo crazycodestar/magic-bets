@@ -10,7 +10,7 @@ export interface IconPointsProps {
 const IconPoints: FC<IconPointsProps> = ({ children, Icon, color }) => {
 	return (
 		<div className="flex items-center">
-			<div className="p-4 bg-slate-600 rounded-lg mr-3">
+			<div className="p-6 bg-slate-800 rounded-lg mr-3">
 				{<Icon className={`${color} text-lg`} />}
 			</div>
 			<p className="inline">{children}</p>

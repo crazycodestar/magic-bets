@@ -16,29 +16,34 @@ import { useNavigate } from "react-router-dom";
 const Home: FC = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="text-white bg-slate-700">
+		<div className="text-white bg-primary">
 			<NavigationBar />
 			<div
-				className="px-3 h-[calc(100vh-80px)] flex flex-col justify-center items-center pb-[200px] mt-8 text-center
-			md:px-16 lg:px-60 space-y-8"
+				className="px-3 h-[calc(80vh-80px)] flex flex-col justify-center items-center pb-[200px] mt-[100px] text-center
+			md:px-16 lg:px-60 space-y-10"
 			>
-				<div className="space-y-8">
-					<h1 className="text-7xl">We find and calculate</h1>
-					<h1 className="text-7xl">Surebets</h1>
+				<div className="space-y-1 sm:space-y-5">
+					<h1 className="text-5xl sm:text-7xl">We find and calculate</h1>
+					<h1 className="text-4xl sm:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-500">
+						surebets
+					</h1>
 				</div>
-				<p className="text-lg">
+				<p className="text-lg text-slate-300">
 					All you have to do is go to the bookmakers, place your stake and make
 					a profit.
 				</p>
-				<div className="w-[420px] mx-auto">
+				<div className="max-w-[420px] w-full mx-auto relative top-8">
 					<Button modified onClick={() => navigate("/pricing")}>
 						Pricing
 					</Button>
 				</div>
 			</div>
-			<div className="px-3 mb-20 md:px-16 lg:px-60 lg:space-y-8 pb-32">
-				<h1 className="mb-5">Earn $$$ every week with arbitrage betting</h1>
-				<div className="grid grid-cols-1 w-full gap-5 md:grid-cols-2">
+			<div className="px-3 md:px-16 lg:px-60 lg:space-y-8">
+				<h1 className="text-4xl sm:text-5xl mb-16">
+					Earn <span className="text-slate-300">$$$ every week</span> with
+					arbitrage betting
+				</h1>
+				<div className="grid grid-cols-1 w-full gap-5 sm:grid-cols-2 sm:gap-y-10 ">
 					<IconPoints color="text-yellow-400" Icon={MdLightbulb}>
 						Profitable <Mark color="text-yellow-400">Sure Bets</Mark> daily
 					</IconPoints>
@@ -56,7 +61,9 @@ const Home: FC = () => {
 				</div>
 			</div>
 			<div className="px-3 mb-20 md:px-16 lg:px-60 py-32">
-				<h2 className="mb-5">How Betslayer-clone works</h2>
+				<h1 className="mb-5 text-4xl sm:text-5xl">
+					How <span className="text-slate-300"> Betslayer-clone</span> works
+				</h1>
 				<div>
 					<div className="flex justify-between">
 						<p className="text-xs">1. Find bets with betslayer-clone</p>
@@ -70,21 +77,21 @@ const Home: FC = () => {
 					<p className="text-center">
 						2. Click throught the bookmark link and place your bet
 					</p>
-					<div className="mt-8">
-						<div className="w-[420px] mx-auto">
+					<div className="mt-32">
+						<div className="max-w-[420px] mx-auto">
 							<Button modified onClick={() => navigate("/pricing")}>
-								Get full access for only ₦10k
+								Get full access for only ₦10,000
 							</Button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div className="space-y-5 px-5 md:px-16 lg:px-60 pb-32">
-				<h2>
-					Arbitrage Betting is
-					<br /> not Gambling
-				</h2>
-				<p>
+				<h1 className="text-4xl sm:text-5xl">
+					Arbitrage Betting is{" "}
+					<span className="text-slate-300">not Gambling</span>
+				</h1>
+				<p className="text-slate-200">
 					Arbitrage betting or sure betting has nothing to do with gambling
 					despite what the word “betting” would suggest. Betslayer teaches you
 					how to place arbitrage bets that make you a profit, no matter the

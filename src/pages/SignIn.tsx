@@ -1,6 +1,8 @@
 import { FC } from "react";
+
+// components
 import Button from "../components/Button";
-import Input from "../components/Input";
+import InputForm from "../components/formFields/InputForm";
 
 // navigation
 import { useNavigate } from "react-router-dom";
@@ -11,7 +13,8 @@ import * as Yup from "yup";
 import NavigationBar from "../components/NavigationBar";
 
 const signInValidation = Yup.object({
-	username: Yup.string().min(3).max(255).required(),
+	username: Yup.string().min(3).max(25).required(),
+	password: Yup.string().min(8).max(16).required(),
 });
 
 const SignIn: FC = () => {
@@ -35,16 +38,18 @@ const SignIn: FC = () => {
 							alert(values);
 						}}
 					>
-						{({ setSubmitting }) => (
+						{({ setSubmitting, errors, values }) => (
 							<Form className="w-full space-y-5">
-								<Input label="username" />
-								<Input label="password" />
+								<InputForm label="username" name="username" />
+								<InputForm label="password" type="password" name="password" />
 								<div className="space-y-3">
 									<Button>Sign in</Button>
 									<Button secondary onClick={() => navigate("/sign-up")}>
 										Sign up
 									</Button>
 								</div>
+								{/* <pre>{JSON.stringify(values, null, 2)}</pre>
+								<pre>{JSON.stringify(errors, null, 2)}</pre> */}
 							</Form>
 						)}
 					</Formik>

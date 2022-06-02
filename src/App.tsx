@@ -10,6 +10,8 @@ import About from "./pages/About";
 // react touter
 import { Routes, Route } from "react-router-dom";
 import Surebets from "./pages/Surebets";
+import ConfirmEmail from "./pages/ConfirmEmail";
+import ActivatedSuccess from "./pages/ActivatedSuccess";
 
 const App = () => {
 	return (
@@ -20,6 +22,8 @@ const App = () => {
 			<Route path="/sure-bets" element={<Surebets />} />
 			<Route path="/pricing" element={<Pricing />} />
 			<Route path="/about" element={<About />} />
+			<Route path="/confirmEmail" element={<ConfirmEmail />} />
+			<Route path="/success" element={<ActivatedSuccess />} />
 		</Routes>
 	);
 };

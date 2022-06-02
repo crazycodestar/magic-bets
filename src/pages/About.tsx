@@ -9,13 +9,13 @@ import Footer from "../components/Footer";
 const About: FC = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="text-white bg-slate-700">
+		<div className="text-white bg-primary">
 			<NavigationBar />
 			<div
-				className="px-3 h-[calc(100vh-80px)]  flex flex-col justify-center items-center pb-[200px] mt-8 text-center
+				className="px-3 h-[calc(80vh-80px)]  flex flex-col justify-center items-center pb-[200px] mt-8 text-center
 			md:px-16 lg:px-60 space-y-8"
 			>
-				<h1 className="text-7xl">
+				<h1 className="text-5xl sm:text-7xl sm:leading-tight">
 					Learn how arbitrage betting can help you{" "}
 					<span className="text-violet-600">profit every month</span>
 				</h1>
@@ -73,7 +73,7 @@ const About: FC = () => {
 					go.
 				</p>
 
-				<div className="w-[420px] mx-auto">
+				<div className="max-w-[420px] w-full mx-auto">
 					<Button modified onClick={() => navigate("/pricing")}>
 						Pricing
 					</Button>
