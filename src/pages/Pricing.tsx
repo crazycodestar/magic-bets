@@ -101,9 +101,9 @@ const Pricing: FC = () => {
 		const { emailAddress, id } = userInit.getUser;
 
 		const handler = window.PaystackPop.setup({
-			key: "pk_test_0d4628adca1acc7f0260de3bfb1799a314d5ae82",
+			key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
 			email: emailAddress,
-			plan: "PLN_k30bxqo7kt324sg",
+			plan: process.env.REACT_APP_PAYSTACK_PLAN,
 			metadata: {
 				subscription: "subscription plan",
 				userId: id,

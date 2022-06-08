@@ -62,16 +62,16 @@ const Home: FC = () => {
 			</div>
 			<div className="px-3 mb-20 md:px-16 lg:px-60 py-32">
 				<h1 className="mb-5 text-4xl sm:text-5xl">
-					How <span className="text-slate-300"> Magicbets</span> works
+					How <span className="text-slate-300"> Arbxbet</span> works
 				</h1>
 				<div>
 					<div className="flex justify-between">
-						<p className="text-xs">1. Find bets with magicbets</p>
+						<p className="text-xs">1. Find bets with Arbxbet</p>
 						<p className="text-xs">3. Enjoy your profits</p>
 					</div>
 					<img
 						src="https://betslayer.com/wp-content/uploads/2021/01/how-betsplayer-home.png"
-						alt="how magicbets works"
+						alt="how arbxbet works"
 						className="w-full"
 					/>
 					<p className="text-center">

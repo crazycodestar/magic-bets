@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import { gql, useQuery } from "@apollo/client";
 
+import logo from "../assets/images/logo.svg";
+
 const GETUSER = gql`
 query GetUser {
   getUser {
@@ -65,12 +67,15 @@ const NavigationBar: FC = () => {
 			>
 				<MdMenu className="text-white" />
 			</div>
-			<h3
-				className="text-white text-left cursor-pointer"
-				onClick={() => navigate("/")}
-			>
-				Magicbets
-			</h3>
+			<div className=" flex space-x-2 items-center cursor-pointer"
+				onClick={() => navigate("/")}>
+				<img src={logo} alt="logo" className="w-[30px] h-[30px] bg-transparent" />
+				<h3
+					className="text-white text-left"
+				>
+					Arbxbets
+				</h3>
+			</div>
 			<div
 				className={`lg:flex lg:flex-row space-y-5 lg:space-x-5 text-lg text-slate-300 items-baseline lg:relative ${showDropdown ? "" : "hidden"
 					}`}

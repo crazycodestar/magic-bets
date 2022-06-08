@@ -16,6 +16,8 @@ import NavigationBar from "../components/NavigationBar";
 import { gql, useMutation } from "@apollo/client";
 import { returnData } from "../interface/common"
 
+import logo from "../assets/images/logo.svg"
+
 const signInValidation = Yup.object({
 	username: Yup.string().min(3).max(25).required(),
 	password: Yup.string().min(8).max(16).required(),
@@ -68,7 +70,9 @@ const SignIn: FC = () => {
 				<NavigationBar />
 			</div>
 			<div className="relative max-w-[400px] w-full mx-5 p-5 my-auto">
-				<div className="w-[100px] h-[100px] mb-5 shadow-lg rounded-lg bg-violet-500 mx-auto" />
+				<div className="w-[100px] h-[100px] mb-5 shadow-lg rounded-lg flex items-center justify-center bg-violet-500 mx-auto" >
+					<img src={logo} alt="logo" className="w-[50px] h-[50px] bg-transparent" />
+				</div>
 				<div>
 					<div className="mb-5">
 						<h2 className="mb-1">Sign In</h2>
