@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
 // components
 import Button from "../components/Button";
@@ -12,13 +12,56 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import NavigationBar from "../components/NavigationBar";
 
+// backend communication
+import { gql, useMutation } from "@apollo/client";
+import { returnData } from "../interface/common"
+
 const signInValidation = Yup.object({
 	username: Yup.string().min(3).max(25).required(),
 	password: Yup.string().min(8).max(16).required(),
 });
 
+const LOGIN = gql`
+	mutation Mutation($username: String!, $password: String!) {
+  login(username: $username, password: $password) {
+    status
+    message
+    user {
+      id
+    }
+  }
+}
+`
+
+interface ILoginInputData {
+	username: string;
+	password: string;
+}
+
+interface IReturnData extends returnData {
+	user?: {
+		id: string;
+	}
+}
+
 const SignIn: FC = () => {
 	const navigate = useNavigate();
+	const [login, { loading, error, data }] = useMutation<{ login: IReturnData }, ILoginInputData>(LOGIN);
+
+	useEffect(() => {
+		if (!data) return;
+		const { status, message, user } = data.login;
+		if (status === "unactivated") {
+			navigate(`/confirmEmail/${user?.id}`);
+		}
+		if (status === "success") {
+			localStorage.setItem("token", message || "");
+			navigate("/")
+		};
+	}, [data])
+
+	const result = data?.login;
+
 	return (
 		<div className="w-screen h-screen flex flex-col items-center">
 			<div className="w-full">
@@ -30,20 +73,23 @@ const SignIn: FC = () => {
 					<div className="mb-5">
 						<h2 className="mb-1">Sign In</h2>
 						<p>Enter you user details.</p>
+						{result?.status === "failed" && <p className="text-red-500">{result?.message}</p>}
 					</div>
 					<Formik
-						initialValues={{ username: "", password: "" }}
+						initialValues={{ username: "username", password: "password" }}
 						validationSchema={signInValidation}
 						onSubmit={(values, { setSubmitting }) => {
-							alert(values);
+							setSubmitting(true);
+							login({ variables: values })
+							setSubmitting(false);
 						}}
 					>
 						{({ setSubmitting, errors, values }) => (
 							<Form className="w-full space-y-5">
 								<InputForm label="username" name="username" />
 								<InputForm label="password" type="password" name="password" />
-								<div className="space-y-3">
-									<Button>Sign in</Button>
+								<div className="space-y-3 md:flex md:justify-end md:space-y-0 md:space-x-3">
+									<Button type="submit">Sign in</Button>
 									<Button secondary onClick={() => navigate("/sign-up")}>
 										Sign up
 									</Button>

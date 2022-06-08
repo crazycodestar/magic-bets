@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Button from "../components/Button";
 
 // navigation
@@ -39,9 +39,29 @@ const SIGN_UP = gql`
 	}
 `;
 
+type options = "success" | "failed"
+
+interface ISignUp {
+	signUp: {
+		status: options;
+		message?: string;
+	}
+}
+
 const SignUp: FC = () => {
 	const navigate = useNavigate();
-	const [signUp, { loading, data, error }] = useMutation(SIGN_UP);
+	const [signUp, { data }] = useMutation<ISignUp>(SIGN_UP);
+	const [email, setEmail] = useState<string>("")
+
+	useEffect(() => {
+		if (!data) return;
+		const { message, status } = data.signUp;
+		if (status === "success") navigate(`/confirmEmail/${message}?email=${email}`)
+		console.log(status, message);
+	}, [data])
+
+	const result = data?.signUp;
+
 	return (
 		<div className="w-screen h-screen flex flex-col items-center">
 			<div className="w-full">
@@ -53,6 +73,9 @@ const SignUp: FC = () => {
 					<div className="mb-5">
 						<h2 className="mb-1">Sign Up</h2>
 						<p>We are happy to have you with us.</p>
+						<p className="text-red-500" >
+							{result?.status === "failed" && result.message}
+						</p>
 					</div>
 					<Formik
 						initialValues={{
@@ -63,8 +86,9 @@ const SignUp: FC = () => {
 						validationSchema={signInValidation}
 						onSubmit={(values, { setSubmitting }) => {
 							setSubmitting(true);
+							setEmail(values.emailAddress);
 							signUp({ variables: values });
-							navigate("/confirmEmail");
+							// navigate(`/confirmEmail/${values.emailAddress}`);
 						}}
 					>
 						{({ setSubmitting, values, errors, handleSubmit }) => (

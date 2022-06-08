@@ -19,7 +19,7 @@ const Home: FC = () => {
 		<div className="text-white bg-primary">
 			<NavigationBar />
 			<div
-				className="px-3 h-[calc(80vh-80px)] flex flex-col justify-center items-center pb-[200px] mt-[100px] text-center
+				className="px-3 h-[calc(80vh-80px)] flex flex-col justify-center items-center mb-[200px] mt-[100px] text-center
 			md:px-16 lg:px-60 space-y-10"
 			>
 				<div className="space-y-1 sm:space-y-5">
@@ -62,16 +62,16 @@ const Home: FC = () => {
 			</div>
 			<div className="px-3 mb-20 md:px-16 lg:px-60 py-32">
 				<h1 className="mb-5 text-4xl sm:text-5xl">
-					How <span className="text-slate-300"> Betslayer-clone</span> works
+					How <span className="text-slate-300"> Magicbets</span> works
 				</h1>
 				<div>
 					<div className="flex justify-between">
-						<p className="text-xs">1. Find bets with betslayer-clone</p>
+						<p className="text-xs">1. Find bets with magicbets</p>
 						<p className="text-xs">3. Enjoy your profits</p>
 					</div>
 					<img
 						src="https://betslayer.com/wp-content/uploads/2021/01/how-betsplayer-home.png"
-						alt="how betslayer-clone works"
+						alt="how magicbets works"
 						className="w-full"
 					/>
 					<p className="text-center">

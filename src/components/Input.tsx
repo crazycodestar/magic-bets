@@ -6,7 +6,8 @@ type state = "default" | "danger" | "inactive";
 export interface InputProps {
 	label?: string;
 	lowerTitle?: string;
-	value?: string;
+	value?: string | number;
+	className?: string;
 	type?: HTMLInputTypeAttribute;
 	// onChange?: () => any;
 	state?: state;
@@ -20,6 +21,7 @@ const Input: FC<InputProps> = ({
 	type = "text",
 	lowerTitle,
 	onChange,
+	className,
 	...others
 }) => {
 	const [showPassword, setShowPassword] = useState<Boolean>(false);
@@ -41,9 +43,8 @@ const Input: FC<InputProps> = ({
 				value={value}
 				placeholder="..."
 				type={handleType(type)}
-				className={`peer placeholder-transparent w-full px-3 py-2 border-2 border-violet-200 rounded-lg focus:ring focus:ring-violet-500 ${
-					state === "danger" ? "focus:ring-red-500 border-red-200" : ""
-				}`}
+				className={`peer appearance-none placeholder-transparent w-full px-3 py-2 border-2 border-violet-200 rounded-lg focus:ring focus:ring-violet-500 ${state === "danger" ? "focus:ring-red-500 border-red-200" : ""
+					} ${className ? className : ""} `}
 				onChange={onChange}
 			/>
 			<div
@@ -54,9 +55,8 @@ const Input: FC<InputProps> = ({
 			</div>
 			{lowerTitle && (
 				<p
-					className={`ml-3 capitalize text-violet-500 mt-1 ${
-						state === "danger" ? "text-red-500" : ""
-					}`}
+					className={`ml-3 capitalize text-violet-500 mt-1 ${state === "danger" ? "text-red-500" : ""
+						}`}
 				>
 					{lowerTitle}
 				</p>
@@ -65,11 +65,10 @@ const Input: FC<InputProps> = ({
 				className={`absolute bg-white pointer-events-none text-violet-500 transition-all left-3 -top-4 capitalize
 				peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-slate-400 peer-placeholder-shown:bg-transparent
 				peer-focus:-top-4 peer-focus:bg-white peer-focus:text-violet-500
-				${
-					state === "danger"
+				${state === "danger"
 						? "text-red-500 peer-placeholder-shown:text-red-200 peer-focus:text-red-500"
 						: ""
-				}
+					}
 			`}
 			>
 				{label}
