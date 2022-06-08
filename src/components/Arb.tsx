@@ -40,7 +40,7 @@ const Arb: FC<IArbProps> = ({ initiator, redirects, regular, sport, subscribed, 
       const totalStake = Number(amount);
 
       const probOutcome = 100 / oddOfOutcome;
-      const percentageTotalArb = percentageProfit;
+      const percentageTotalArb = 100 - percentageProfit;
 
       const inidividualBet = (totalStake * probOutcome) / percentageTotalArb;
       return round(inidividualBet, 1)
